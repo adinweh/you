@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:))</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFB6C1; /* Pink background */
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .landing {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panda {
+            position: absolute;
+            right: -200px; /* Start from right side */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            animation: walkToCenter 6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smoother walk with custom easing */
+        }
+
+        /* Enhanced walking animation with body sway and leg movement */
+        .panda svg {
+            width: 100%;
+            height: 100%;
+            animation: pandaWalk 0.8s infinite ease-in-out; /* Continuous walking cycle */
+        }
+
+        @keyframes walkToCenter {
+            0% {
+                right: -200px;
+                transform: translateY(-50%) scaleX(1); /* Facing right */
+            }
+            100% {
+                right: 50%;
+                transform: translateY(-50%) scaleX(1); /* Stop at center */
+            }
+        }
+
+        @keyframes pandaWalk {
+            0% {
+                transform: translateY(0) rotate(0deg); /* Neutral */
+            }
+            25% {
+                transform: translateY(-5px) rotate(-2deg); /* Lift left leg, sway */
+            }
+            50% {
+                transform: translateY(0) rotate(0deg); /* Step */
+            }
+            75% {
+                transform: translateY(-5px) rotate(2deg); /* Lift right leg, sway */
+            }
+            100% {
+                transform: translateY(0) rotate(0deg); /* Back to neutral */
+            }
+        }
+
+        /* Individual leg animations for more realism */
+        .left-leg {
+            animation: leftLegWalk 0.8s infinite ease-in-out;
+        }
+
+        .right-leg {
+            animation: rightLegWalk 0.8s infinite ease-in-out;
+        }
+
+        @keyframes leftLegWalk {
+            0%, 50% { transform: translateY(0); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+        }
+
+        @keyframes rightLegWalk {
+            0%, 50% { transform: translateY(0); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #FF69B4; /* Deeper pink for menu */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .menu h1 {
+            color: white;
+            font-size: 3em;
+            color-scheme: inherit;
+            color:beige;
+        }
+
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        audio {
+            display: none; /* Hidden, plays on click */
+        }
+        .menu a button{
+            background-color:hotpink;
+           
+        }
+        .menu a button:hover{
+            background-color: orangered;
+        }
+        .menu a button:active{
+            background-color: yellowgreen;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div class="landing">
+        <div class="panda" id="panda">
+            <!-- Enhanced SVG of a cute pink panda with classes for legs -->
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Body -->
+                <ellipse cx="50" cy="60" rx="30" ry="25" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <!-- Head -->
+                <circle cx="50" cy="35" r="20" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <!-- Ears -->
+                <circle cx="35" cy="25" r="8" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <circle cx="65" cy="25" r="8" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <!-- Eyes -->
+                <circle cx="45" cy="30" r="3" fill="black"/>
+                <circle cx="55" cy="30" r="3" fill="black"/>
+                <!-- Nose -->
+                <ellipse cx="50" cy="38" rx="2" ry="1" fill="black"/>
+                <!-- Mouth -->
+                <path d="M45 42 Q50 45 55 42" stroke="black" stroke-width="2" fill="none"/>
+                <!-- Arms -->
+                <ellipse cx="25" cy="55" rx="8" ry="15" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <ellipse cx="75" cy="55" rx="8" ry="15" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <!-- Legs (with classes for animation) -->
+                <ellipse class="left-leg" cx="40" cy="80" rx="8" ry="15" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+                <ellipse class="right-leg" cx="60" cy="80" rx="8" ry="15" fill="#FFC0CB" stroke="#FF69B4" stroke-width="2"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="menu" id="menu">
+        <h1>HALLO😁💕</h1>
+        <a href="main.html"><button>NEXT</button></a>
+    
+    </div>
+
+    <!-- Audio element for music (replace src with your music file URL) -->
+    <audio id="music" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" preload="auto"></audio> <!-- Placeholder music; replace with actual cute music URL -->
+
+    <script>
+        const panda = document.getElementById('panda');
+        const menu = document.getElementById('menu');
+        const music = document.getElementById('music');
+
+        // When panda is clicked, show menu and play music
+        panda.addEventListener('click', () => {
+            menu.style.display = 'flex';
+            music.play();
+        });
+    </script>
+</body>
+</html>
